@@ -45,7 +45,11 @@ GPT-Neo 모델의 성능을 평가하기 위해 **MMLU (Massive Multitask Langua
 - **실행 환경:** CPU  
 - **평가 명령어:**
   ```bash
-  lm-eval --model hf --model_args pretrained=EleutherAI/gpt-neo-125M --tasks mmlu --device cpu --output_path evaluation/lm_eval_harness/EleutherAI__gpt-neo-125M/results.json
+  lm-eval --model hf 
+  --model_args pretrained=EleutherAI/gpt-neo-125M 
+  --tasks mmlu 
+  --device cpu 
+  --output_path evaluation/lm_eval_harness/EleutherAI__gpt-neo-125M/results.json
   ```
 
 ### **평가 결과 요약**

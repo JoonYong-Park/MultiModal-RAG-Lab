@@ -1,9 +1,8 @@
 import json
 import pandas as pd
 
-
-json_file_path = "evaluation/lm_eval_harness/EleutherAI__gpt-neo-125M/results_2025-02-11T19-45-42.135976.json"
-excel_file_path = "evaluation/excel/EleutherAI__gpt-neo-125M/output.xlsx"
+json_file_path = "evaluation/data/EleutherAI__gpt-neo-125M/results_2025-02-11T19-45-42.135976.json"
+excel_file_path = "evaluation/output/EleutherAI__gpt-neo-125M/results_2025-02-11T19-45-42.135976.xlsx"
 
 with open(json_file_path, "r", encoding="utf-8") as file:
     data = json.load(file)
