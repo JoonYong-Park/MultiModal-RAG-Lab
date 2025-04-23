@@ -47,7 +47,7 @@ ensemble_retriever = EnsembleRetriever(
 retrieved_docs = {query: ensemble_retriever.invoke(query) for query in gold_data}
 
 # 검색 결과 평가 함수
-def evalute_search(retrieved_docs, gold_standard, documents):
+def evaluate_search(retrieved_docs, gold_standard, documents):
     precisions = []
     recalls = []
     f1s = []
