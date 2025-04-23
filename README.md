@@ -34,25 +34,26 @@
 3. **체인 구현**
    - LCEL(LangChain Execution Layer)을 사용하여 검색 및 처리를 자동화합니다.
 
-## **3. Language Model Evaluation (LM-Eval-Harness)**
+### 3. Language Model Evaluation (LM-Eval-Harness)
+
 [GPT-Neo MMLU 벤치마킹 결과](evaluation/excel/EleutherAI__gpt-neo-125M/output.xlsx)  
 GPT-Neo 모델의 성능을 평가하기 위해 **MMLU (Massive Multitask Language Understanding) 데이터셋**을 사용하여 벤치마킹을 진행하였습니다.
 
-### **평가 방법**
+#### 평가 방법
 - **평가 도구:** [`lm-eval-harness`](https://github.com/EleutherAI/lm-evaluation-harness)  
 - **모델:** GPT-Neo-125M (Hugging Face `EleutherAI/gpt-neo-125M`)  
 - **데이터셋:** MMLU (Massive Multitask Language Understanding)  
 - **실행 환경:** CPU  
 - **평가 명령어:**
   ```bash
-  lm-eval --model hf 
-  --model_args pretrained=EleutherAI/gpt-neo-125M 
-  --tasks mmlu 
-  --device cpu 
+  lm-eval --model hf \
+  --model_args pretrained=EleutherAI/gpt-neo-125M \
+  --tasks mmlu \
+  --device cpu \
   --output_path evaluation/lm_eval_harness/EleutherAI__gpt-neo-125M/results.json
   ```
 
-### **평가 결과 요약**
+#### 평가 결과 요약
 - **전체 정확도(Accuracy):** `23.13%`
 - **세부 평가 결과:**  
   - **인문학 (Humanities):** `24.34%`
@@ -62,4 +63,30 @@ GPT-Neo 모델의 성능을 평가하기 위해 **MMLU (Massive Multitask Langua
   - **사회과학 (Social Sciences):** `22.00%`
   - **STEM 분야:** `21.47%`
 
-📄 **자세한 평가 결과는 [엑셀 파일](evaluation/excel/EleutherAI__gpt-neo-125M/output.xlsx)에서 확인 가능**  
+**자세한 평가 결과는 [엑셀 파일](evaluation/excel/EleutherAI__gpt-neo-125M/output.xlsx)에서 확인 가능**
+
+### 4. Multimodal Inference with LLaVA
+
+[멀티모달 추론 실습 노트북](notebooks/llava/kt_ku_llava.ipynb)  
+LLaVA 1.5 기반 멀티모달 추론 실습 코드입니다.
+
+#### 주요 내용:
+- Hugging Face Transformers와 BitsAndBytes를 활용하여 LLaVA 1.5 모델 로딩
+- 이미지 + 텍스트를 입력으로 받아 시각 정보를 활용한 질의응답 수행
+- `generate()` 방식과 `pipeline()` 방식 두 가지 모두 실습
+- 모델 추론 시 `<image>` 토큰을 활용한 멀티모달 입력 처리
+
+이 실습은 Colab에서 GPU 환경에서 진행한 코드입니다.
+
+### 5. Retriever Evaluation
+
+[리트리버 평가 실습 코드](evaluation/scripts/evaluate.py)  
+LangChain 기반의 리트리버 평가 실습 코드입니다.
+
+#### 주요 내용:
+- **BM25Retriever + FAISSRetriever**를 조합한 EnsembleRetriever 구성
+- 쿼리-문서 매핑에 대한 gold label 기준 recall, precision, F1 점수 평가
+- `sklearn.metrics`를 활용한 수치 계산
+- 소규모 테스트 문서를 활용한 빠른 실습 가능
+
+📌 `EnsembleRetriever`는 각각의 리트리버에 가중치를 부여하여 검색 성능을 조합적으로 향상시키는 구조입니다.
