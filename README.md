@@ -67,7 +67,7 @@ GPT-Neo 모델의 성능을 평가하기 위해 **MMLU (Massive Multitask Langua
 
 ### 4. Multimodal Inference with LLaVA
 
-[멀티모달 추론 실습 노트북](notebooks/kt_ku_llava_demo.ipynb)  
+[멀티모달 추론 실습 노트북](notebooks/llava/kt_ku_llava.ipynb)  
 LLaVA 1.5 기반 멀티모달 추론 실습 코드입니다.
 
 #### 주요 내용:
@@ -80,7 +80,7 @@ LLaVA 1.5 기반 멀티모달 추론 실습 코드입니다.
 
 ### 5. Retriever Evaluation
 
-[리트리버 평가 실습 코드](notebooks/kt_ku_retriever_eval_demo.py)  
+[리트리버 평가 실습 코드](evaluation/scripts/evaluate.py)  
 LangChain 기반의 리트리버 평가 실습 코드입니다.
 
 #### 주요 내용:
