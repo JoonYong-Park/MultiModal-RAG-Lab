@@ -76,7 +76,7 @@ def evaluate_search(retrieved_docs, gold_standard, documents):
     return avg_precision, avg_recall, avg_f1
 
 # 평가 실행
-avg_precision, avg_recall, avg_f1 = evalute_search(retrieved_docs, gold_data, doc_list)
+avg_precision, avg_recall, avg_f1 = evaluate_search(retrieved_docs, gold_data, doc_list)
 
 # 결과 출력
 print(f"precision: {avg_precision}")
